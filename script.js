@@ -6,6 +6,7 @@ let myLibrary = [
     {title: "Jurassic Park", author: "Michael Crichton", genre: "Science Fiction"},
 ];
 
+let cardCounter = 0
 const titleInput = document.querySelector('#title')
 const authorInput = document.querySelector('#author')
 const genreInput = document.querySelector('#genre')
@@ -50,6 +51,7 @@ function addBookToLibrary() {
 }
 
 function displayBook() {
+    cardCounter++
     const bookCard = document.createElement('div')
     const titleText = document.createElement('h1')
     const authorText = document.createElement('p')
@@ -58,6 +60,7 @@ function displayBook() {
     const removeBtn = document.createElement('button')
     const readBtn = document.createElement('button')
     bookCard.classList.add('bookCard')
+    bookCard.classList.add(`bookCard-${cardCounter}`)
     titleText.textContent = `${myLibrary[myLibrary.length - 1].title}`
     titleText.classList.add('titleText')
     authorText.textContent = `${myLibrary[myLibrary.length -1].author}`
@@ -68,6 +71,7 @@ function displayBook() {
     readBtn.classList.add('readBtn')
     removeBtn.textContent = 'Remove from library'
     removeBtn.classList.add('removeBtn')
+    readBtn.addEventListener('click', toggleReadStatus)
     bookCard.appendChild(titleText)
     bookCard.appendChild(divider)
     bookCard.appendChild(authorText)
@@ -79,6 +83,7 @@ function displayBook() {
 
 function displayAllBooks() {
     myLibrary.forEach(book => {
+        cardCounter++
         const bookCard = document.createElement('div')
         const titleText = document.createElement('h1')
         const authorText = document.createElement('p')
@@ -87,6 +92,7 @@ function displayAllBooks() {
         const removeBtn = document.createElement('button')
         const readBtn = document.createElement('button')
         bookCard.classList.add('bookCard')
+        bookCard.classList.add(`bookCard-${cardCounter}`)
         titleText.textContent = `${book.title}`
         titleText.classList.add('titleText')
         authorText.textContent = `${book.author}`
@@ -95,6 +101,7 @@ function displayAllBooks() {
         genreText.classList.add('genreText')
         readBtn.textContent = 'Read'
         readBtn.classList.add('readBtn')
+        readBtn.addEventListener('click', toggleReadStatus)
         removeBtn.textContent = 'Remove from library'
         removeBtn.classList.add('removeBtn')
         bookCard.appendChild(titleText)
@@ -105,6 +112,18 @@ function displayAllBooks() {
         bookCard.appendChild(removeBtn)
         myShelf.appendChild(bookCard)
     })
+}
+
+function toggleReadStatus(event) {
+    const card = event.target.closest('.bookCard')
+    let cardId
+    if (card) {
+        cardId = card.classList[1];
+    }
+    if (cardId) {
+        const clickedCard = document.querySelector(`.${cardId}`)
+        clickedCard.classList.toggle('yesReadStatus')
+    }
 }
 
 displayAllBooks()

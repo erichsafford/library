@@ -35,6 +35,11 @@ form {
     background-color: black;
     padding-inline: 10px;
     color: white;
+    height: 100vh;
+}
+
+#submitButton {
+    margin-top: 3em;
 }
 
 .container {
@@ -77,7 +82,7 @@ button {
     padding: 30px;
     gap: 1em;
     box-shadow: 5px 5px 10px slategray;
-    transition: all 600ms;
+    transition: all 350ms;
     animation-name: bookPopIn;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;

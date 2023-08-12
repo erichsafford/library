@@ -74,6 +74,7 @@ button {
 .bookCard {
     position: relative;
     height: 300px;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     background-color: black;

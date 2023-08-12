@@ -64,6 +64,9 @@ function addBookToLibrary() {
     } else {
         console.log('Book already exists in the library')
     }
+    titleInput.value = ""
+    authorInput.value = ""
+    genreInput.value = ""
 }
 
 function displayBook() {
